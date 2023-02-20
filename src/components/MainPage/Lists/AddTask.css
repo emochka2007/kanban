@@ -1,0 +1,22 @@
+.form-addTask {
+  background-color: rgb(205, 179, 229);
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  padding: 10px;
+  border-radius: 8px;
+}
+.form-addTask input {
+  height: 50px;
+  width: 40%;
+}
+
+.non-active {
+  transform: translate(-300%);
+}
+.active {
+  transform: translate(0);
+}

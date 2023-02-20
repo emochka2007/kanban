@@ -1,0 +1,6 @@
+.lists-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1%;
+}
