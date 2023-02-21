@@ -2,14 +2,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import { MainPage } from "./components/MainPage/MainPage";
 import { Header } from "./components/Header/Header";
-import { StatusProvider } from "./components/Context/StatusContext";
+import { TaskProvider } from "./components/Context/TaskContext";
 function App() {
   return (
     <div className="App">
       <Header />
-      <StatusProvider>
+      <TaskProvider>
         <MainPage />
-      </StatusProvider>
+      </TaskProvider>
     </div>
   );
 }

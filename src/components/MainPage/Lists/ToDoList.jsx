@@ -3,24 +3,21 @@ import "./Lists.css";
 import { Card } from "../Card/Card";
 import { useState } from "react";
 import { AddTask } from "./AddTask";
+import { TaskContext } from "../../Context/TaskContext";
 import { nanoid } from "nanoid";
-import { StatusContext } from "../../Context/StatusContext";
-export const ToDoList = ({ tasks, changeTasks }) => {
-  const [count, setCount] = useState(tasks.length);
+export const ToDoList = () => {
+  const { tasks, setTasks } = useContext(TaskContext);
   const [isPromptActive, setIsPromptActive] = useState(false);
   const showPrompt = () => {
     setIsPromptActive(!isPromptActive);
   };
-  const { statusTask, setStatusTask } = useContext(StatusContext);
-  console.log(statusTask);
+  const toDoTasks = tasks.filter((item) => item.status === "toDo");
+  const [count, setCount] = useState(toDoTasks.length);
   return (
     <div className="list-block">
       <AddTask
-        changeTasks={changeTasks}
-        tasks={tasks}
         isPromptActive={isPromptActive}
         setIsPromptActive={setIsPromptActive}
-        setCount={setCount}
       />
       <div className="list-header">
         <h1>To Do ({count})</h1>
@@ -33,17 +30,13 @@ export const ToDoList = ({ tasks, changeTasks }) => {
         </button>
       </div>
       <div className="list-body">
-        {tasks.map((item) => {
+        {toDoTasks.map((item) => {
           return (
             <Card
               key={item.id}
               title={item.name}
               description={item.description}
-              changeTasks={changeTasks}
               id={item.id}
-              tasks={tasks}
-              statusContext={statusTask}
-              setCount={setCount}
             />
           );
         })}

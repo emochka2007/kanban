@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import { useContext } from "react";
+import { TaskContext } from "../../Context/TaskContext";
 import "./AddTask.css";
-export const AddTask = ({
-  changeTasks,
-  tasks,
-  isPromptActive,
-  setIsPromptActive,
-  setCount,
-}) => {
+export const AddTask = ({ isPromptActive, setIsPromptActive, setCount }) => {
   const [taskName, setTaskName] = useState("");
   const [isHidden, setIsHidden] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
+  const { tasks, setTasks } = useContext(TaskContext);
   const addTask = (e) => {
+    {
+      /*add validate*/
+    }
     console.log(tasks.length);
     e.preventDefault();
   };
@@ -37,7 +37,7 @@ export const AddTask = ({
         <button
           type="submit"
           onClick={() => {
-            changeTasks([
+            setTasks([
               ...tasks,
               {
                 name: taskName,
@@ -46,7 +46,7 @@ export const AddTask = ({
                 id: nanoid(),
               },
             ]);
-            setCount(tasks.length);
+            setIsPromptActive(!isPromptActive);
           }}
         >
           Add Task
