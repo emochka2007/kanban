@@ -1,11 +1,11 @@
-.list-block {
+.listBlock {
   min-height: 70vh;
   background-color: rgb(5, 5, 220);
   color: white;
   width: 30%;
   border: 1px solid black;
 }
-.list-header {
+.listHeader {
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.list-body {
+.listBody {
   background-color: rgb(120, 120, 214);
   height: 90%;
   width: 100%;

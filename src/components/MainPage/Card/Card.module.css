@@ -30,7 +30,7 @@
   background-image: none;
   cursor: pointer;
 }
-.card-delete {
+.cardDelete {
   position: absolute;
   top: 0;
   right: 0;
@@ -38,7 +38,7 @@
   background: transparent;
 }
 
-.trash-icon {
+.trashIcon {
   cursor: pointer;
   width: 25px;
   height: 25px;

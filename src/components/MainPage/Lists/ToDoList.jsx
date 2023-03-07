@@ -1,26 +1,21 @@
 import React, { useContext } from "react";
-import "./Lists.css";
+import s from "./Lists.module.css";
 import { Card } from "../Card/Card";
 import { useState } from "react";
 import { AddTask } from "./AddTask";
 import { TaskContext } from "../../Context/TaskContext";
 import { nanoid } from "nanoid";
 export const ToDoList = () => {
-  const { tasks, setTasks } = useContext(TaskContext);
+  const { tasks } = useContext(TaskContext);
   const [isPromptActive, setIsPromptActive] = useState(false);
   const showPrompt = () => {
     setIsPromptActive(!isPromptActive);
   };
   const toDoTasks = tasks.filter((item) => item.status === "toDo");
-  const [count, setCount] = useState(toDoTasks.length);
   return (
-    <div className="list-block">
-      <AddTask
-        isPromptActive={isPromptActive}
-        setIsPromptActive={setIsPromptActive}
-      />
-      <div className="list-header">
-        <h1>To Do ({count})</h1>
+    <div className={s.listBlock}>
+      <div className={s.listHeader}>
+        <h1>To Do ({toDoTasks.length})</h1>
         <button
           onClick={() => {
             showPrompt();
@@ -29,7 +24,7 @@ export const ToDoList = () => {
           Add
         </button>
       </div>
-      <div className="list-body">
+      <div className={s.listBody}>
         {toDoTasks.map((item) => {
           return (
             <Card

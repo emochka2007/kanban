@@ -1,20 +1,27 @@
-import React, { useContext } from "react";
-import { DoneList } from "./Lists/DoneList";
-import { InProgressList } from "./Lists/InProgressList";
-import { ToDoList } from "./Lists/ToDoList";
+import React from "react";
+import { Column, AddTask } from "./Lists";
 import { useState } from "react";
-import { TaskContext } from "../../components/Context/TaskContext";
-import "./MainPage.css";
+
+import { TODO, INPR, DONE } from "../../constants";
+import { IconButton } from "../IconButton/IconButton";
+
+import s from "./MainPage.module.css";
 export const MainPage = () => {
-  console.log(TaskContext);
-  const { tasks, setTasks } = useContext(TaskContext);
-  const [count, setCount] = useState(tasks.length);
+  const [isAddTaskVisible, setIsAddTaskVisible] = useState(false);
   return (
-    <div className="lists-container">
-      {/*optimize?*/}
-      <ToDoList count={count} />
-      <InProgressList count={count} />
-      <DoneList count={count} />
+    <div className={s.listsContainer}>
+      <AddTask
+        isPromptActive={isAddTaskVisible}
+        setIsPromptActive={setIsAddTaskVisible}
+      />
+      <Column
+        status={TODO}
+        actionButton={
+          <IconButton icon="add" onClick={() => setIsAddTaskVisible(true)} />
+        }
+      />
+      <Column status={INPR} />
+      <Column status={DONE} />
     </div>
   );
 };

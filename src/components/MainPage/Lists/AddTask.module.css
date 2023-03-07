@@ -1,4 +1,4 @@
-.form-addTask {
+.formAddTask {
   background-color: rgb(205, 179, 229);
   position: absolute;
   top: 30%;
@@ -9,14 +9,26 @@
   padding: 10px;
   border-radius: 8px;
 }
-.form-addTask input {
+.formAddTask input {
   height: 50px;
   width: 40%;
 }
 
-.non-active {
+.nonActive {
   transform: translate(-300%);
 }
 .active {
   transform: translate(0);
+}
+
+.overlay {
+  position: absolute;
+  opacity: 0.5;
+  background-color: black;
+  width: 100%;
+  height: 100vh;
+}
+
+.displayNone {
+  display: none;
 }
